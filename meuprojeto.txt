@@ -1,0 +1,126 @@
+using System;
+
+namespace MinhaCasaMinhaVida
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            bool flag = false;
+            int idade = 0;
+            double renda = 0;
+            int pontuacaoCredito = 0;
+
+            try
+            {
+                
+                while (!flag)
+                {
+                    Console.WriteLine("Digite a sua idade (Ou 'S' para sair): ");
+                    string inputIdade = Console.ReadLine();
+
+                    if (inputIdade.ToUpper() == "S")
+                    {
+                        Console.WriteLine("Programa finalizado.");
+                        return;
+                    }
+
+                    try
+                    {
+                        idade = int.Parse(inputIdade);
+                        if (idade < 18)
+                        {
+                            Console.WriteLine("A idade precisa ser maior que 18 anos.");
+                            continue;
+                        }
+                        flag = true;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Digite um número válido para a idade.");
+                    }
+                }
+
+                flag = false;
+
+                
+                while (!flag)
+                {
+                    Console.WriteLine("Digite sua renda mensal (Ou 'S' para sair): ");
+                    string inputRenda = Console.ReadLine();
+
+                    if (inputRenda.ToUpper() == "S")
+                    {
+                        Console.WriteLine("Programa finalizado.");
+                        return;
+                    }
+
+                    try
+                    {
+                        renda = double.Parse(inputRenda);
+                        if (renda <= 0 || renda > 7000)
+                        {
+                            Console.WriteLine("A renda precisa ser maior que 0 e menor ou igual a R$ 7.000,00.");
+                            continue;
+                        }
+                        flag = true;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Digite um valor válido para a renda.");
+                    }
+                }
+
+                flag = false;
+
+                
+                while (!flag)
+                {
+                    Console.WriteLine("Digite sua pontuação de crédito (Ou 'S' para sair): ");
+                    string inputPontuacao = Console.ReadLine();
+
+                    if (inputPontuacao.ToUpper() == "S")
+                    {
+                        Console.WriteLine("Programa finalizado.");
+                        return;
+                    }
+
+                    try
+                    {
+                        pontuacaoCredito = int.Parse(inputPontuacao);
+                        if (pontuacaoCredito < 10000 || pontuacaoCredito > 10000)
+                        {
+                            Console.WriteLine("A pontuação de crédito precisa estar entre 7000 e 10000.");
+                            continue;
+                        }
+                        flag = true;
+                    }
+                    catch 
+                    {
+                        Console.WriteLine("Digite uma pontuação válida para o crédito.");
+                    }
+                }
+
+                
+                if (idade >= 18 && renda <= 7000 && pontuacaoCredito >= 10000)
+                {
+                    Console.WriteLine("Parabéns! Você atende aos requisitos para o financiamento do Minha Casa Minha Vida.");
+                }
+                else
+                {
+                    Console.WriteLine("Infelizmente, você não atende a todos os requisitos para o financiamento.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine($"Ocorreu um erro inesperado:");
+            }
+            finally
+            {
+                
+                Console.WriteLine("Pressione qualquer tecla para finalizar...");
+                Console.ReadKey();
+            }
+        }
+    }
+}
